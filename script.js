@@ -25,6 +25,8 @@ class CapitalGuessingGame {
   constructor(capitals) {
     this.capitals = capitals;
     this.score = 0;
+
+    // DOM ELEMENTS
     this.currentQuestionIndex = 0;
     this.incorrectAnswers = 0;
     this.questionElement = document.getElementById("question");
@@ -36,13 +38,20 @@ class CapitalGuessingGame {
     this.startButton = document.getElementById("startButton");
     this.answerContainer = document.getElementById("answer-container");
     this.nextButton = document.getElementById("next-button");
+    this.neweElement = document.createElement("img");
+    this.divContainer = document.getElementById("image-container");
+    this.GameOver = document.getElementById("game-over");
+
+    //Appending image element
+    this.divContainer.appendChild(this.neweElement);
+
     /*     this.submitButton.addEventListener("click", () => this.checkAnswer());
-    this.startButton.addEventListener("click", () => this.startGame());
-    this.nextButton.addEventListener("click", () =>
-      this.navigateNextQeustion()
-    );
-    this.renderWelcomeScreen();
-    this.renderQuestion(); */
+      this.startButton.addEventListener("click", () => this.startGame());
+      this.nextButton.addEventListener("click", () =>
+        this.navigateNextQeustion()
+      );
+      this.renderWelcomeScreen();
+      this.renderQuestion(); */
     this.renderQuestion();
   }
 
@@ -57,6 +66,7 @@ class CapitalGuessingGame {
       this.capitals[this.currentQuestionIndex].country
     }?`;
     this.answerInputElement.value = "";
+    this.neweElement.src = `images/${this.currentQuestionIndex}.jpeg`;
   }
 
   checkAnswer() {
@@ -65,22 +75,22 @@ class CapitalGuessingGame {
 
     if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
       this.score++;
-      this.answerContainer.innerHTML = "Correct Answer!";
+      this.answerContainer.innerHTML = "Correct Answer!🎉";
     } else {
       this.incorrectAnswers++;
       this.answerContainer.innerHTML = `Wrong answer! The correct answer is ${correctAnswer}.`;
 
-      /* if (this.incorrectAnswers === 4) {
-        alert("You suck at Geography. Game over!");
+      if (this.incorrectAnswers === 4) {
+        this.GameOver.innerHTML = `You suck at Geography 🤣. Game over!`;
         this.submitButton.disabled = true;
         return;
       }
 
-      if (this.score >= 9) {
-        alert("You're almost a pro at Geography.");
-        this.submitButton.disabled = true;
-        return;
-      } */
+      /*if (this.score >= 9) {
+          alert("You're almost a pro at Geography.");
+          this.submitButton.disabled = true;
+          return;
+        } */
     }
 
     if (this.currentQuestionIndex === this.capitals.length) {
@@ -102,6 +112,7 @@ const submitButton = document.getElementById("submitBtn");
 const startButton = document.getElementById("startButton");
 const nextButton = document.getElementById("next-button");
 
+// Event listeners
 startButton.addEventListener("click", () => {
   game.startGame();
 });
