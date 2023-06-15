@@ -32,8 +32,10 @@ class CapitalGuessingGame {
     this.questionElement = document.getElementById("question");
     this.answerInputElement = document.getElementById("answerInput");
     this.scoreElement = document.getElementById("score");
+    this.endScreenScore = document.getElementById("scoreDisplay");
     this.submitButton = document.getElementById("submitBtn");
     this.welcomeScreen = document.getElementById("welcomeScreen");
+    this.endScreen = document.getElementById("endScreen");
     this.container = document.getElementById("container");
     this.startButton = document.getElementById("startButton");
     this.answerContainer = document.getElementById("answer-container");
@@ -41,17 +43,18 @@ class CapitalGuessingGame {
     this.neweElement = document.createElement("img");
     this.divContainer = document.getElementById("image-container");
     this.GameOver = document.getElementById("game-over");
+    this.questionNumber = document.getElementById("question-number");
 
     //Appending image element
     this.divContainer.appendChild(this.neweElement);
 
     /*     this.submitButton.addEventListener("click", () => this.checkAnswer());
-      this.startButton.addEventListener("click", () => this.startGame());
-      this.nextButton.addEventListener("click", () =>
-        this.navigateNextQeustion()
-      );
-      this.renderWelcomeScreen();
-      this.renderQuestion(); */
+        this.startButton.addEventListener("click", () => this.startGame());
+        this.nextButton.addEventListener("click", () =>
+          this.navigateNextQeustion()
+        );
+        this.renderWelcomeScreen();
+        this.renderQuestion(); */
     this.renderQuestion();
   }
 
@@ -65,8 +68,11 @@ class CapitalGuessingGame {
     this.questionElement.textContent = `What is the capital of ${
       this.capitals[this.currentQuestionIndex].country
     }?`;
+    this.questionNumber.classList.add("heading");
+    this.questionElement.classList.add("heading");
     this.answerInputElement.value = "";
     this.neweElement.src = `images/${this.currentQuestionIndex}.jpeg`;
+    this.questionNumber.textContent = `${this.currentQuestionIndex + 1}/18`;
   }
 
   checkAnswer() {
@@ -75,6 +81,7 @@ class CapitalGuessingGame {
 
     if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
       this.score++;
+      this.endScreenScore.innerHTML = this.score;
       this.answerContainer.innerHTML = "Correct Answer!🎉";
     } else {
       this.incorrectAnswers++;
@@ -83,14 +90,17 @@ class CapitalGuessingGame {
       if (this.incorrectAnswers === 4) {
         this.GameOver.innerHTML = `You suck at Geography 🤣. Game over!`;
         this.submitButton.disabled = true;
+        this.endScreen.style.display = "block";
+        this.container.style.display = "none";
+
         return;
       }
 
       /*if (this.score >= 9) {
-          alert("You're almost a pro at Geography.");
-          this.submitButton.disabled = true;
-          return;
-        } */
+            alert("You're almost a pro at Geography.");
+            this.submitButton.disabled = true;
+            return;
+          } */
     }
 
     if (this.currentQuestionIndex === this.capitals.length) {
@@ -119,8 +129,14 @@ startButton.addEventListener("click", () => {
 
 submitButton.addEventListener("click", () => {
   game.checkAnswer();
+  game.answerContainer.style.display = "block";
+  game.submitButton.style.display = "none";
+  game.nextButton.style.display = "block";
 });
 
 nextButton.addEventListener("click", () => {
   game.navigateNextQeustion();
+  game.submitButton.style.display = "block";
+  game.nextButton.style.display = "none";
+  game.answerContainer.style.display = "none";
 });

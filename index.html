@@ -16,15 +16,22 @@
     </div>
 
     <div id="container" class="hidden">
-      <h1>Capital Guessing Game</h1>
+      <h1 class="heading">Capital Guessing Game</h1>
       <div id="image-container"></div>
+      <p id="question-number"></p>
       <p id="question"></p>
       <p id="answer-container"></p>
-      <p id="game-over"></p>
       <input type="text" id="answerInput" placeholder="Enter the capital" />
       <button id="submitBtn">Submit</button>
-      <button id="next-button">Next</button>
+      <button style="display: none" id="next-button">Next</button>
       <p id="score"></p>
+    </div>
+
+    <div id="endScreen" style="display: none">
+      <h1>Game Over</h1>
+      <p id="game-over"></p>
+      <p>Your score is <span id="scoreDisplay"></span></p>
+      <button id="restartButton" onclick="location.reload()">Restart</button>
     </div>
 
     <script src="script.js"></script>
