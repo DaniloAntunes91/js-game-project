@@ -42,7 +42,7 @@ The game consists of the following files:
 
 To run the game locally on your machine, follow these steps:
 
-1. Clone the repository or download the source code files.
+1. Clone the repository or download the source code files. https://daniloantunes91.github.io/js-game-project/
 2. Open the index.html file in a web browser.
 3. Play the game by following the instructions provided on the screen.
 
