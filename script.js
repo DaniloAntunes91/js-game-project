@@ -68,7 +68,6 @@ class CapitalGuessingGame {
     this.questionElement.textContent = `What is the capital of ${
       this.capitals[this.currentQuestionIndex].country
     }?`;
-    this.questionNumber.classList.add("heading");
     this.questionElement.classList.add("heading");
     this.answerInputElement.value = "";
     this.neweElement.src = `images/${this.currentQuestionIndex}.jpeg`;

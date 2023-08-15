@@ -12,10 +12,26 @@ body {
   font-family: "ArcadeClassic", sans-serif;
   color: #f52100e9;
   font-size: 2em;
+  margin-top: auto;
 }
 
 /* Additional styling for the game elements */
 .heading {
+  font-size: 35px;
+  font-family: "ArcadeClassic", sans-serif;
+  color: white;
+  background-color: black;
+  text-align: center;
+}
+
+h1 {
+  font-size: 35px;
+  font-family: "ArcadeClassic", sans-serif;
+  color: white;
+  background-color: black;
+  text-align: center;
+}
+#game-over {
   font-size: 35px;
   font-family: "ArcadeClassic", sans-serif;
   color: white;
@@ -54,7 +70,13 @@ body {
   font-family: "ArcadeClassic", sans-serif;
   font-size: 2em;
 }
-
+#restartButton {
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-family: "ArcadeClassic", sans-serif;
+  font-size: 2em;
+}
 #score {
   margin-top: 20px;
 }
